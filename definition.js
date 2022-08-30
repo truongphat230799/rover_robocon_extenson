@@ -57,7 +57,6 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
             {
                 type: "input_value",
                 check: "Number",
-                value: 5,
                 name: "timeout",
             }
           ],

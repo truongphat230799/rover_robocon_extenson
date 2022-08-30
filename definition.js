@@ -71,9 +71,9 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
     var request = Blockly.Python.valueToCode(block, 'request',Blockly.Pyhton.ORDER_ATOMIC);
     var code = "";
     if (speed > 0 )
-        code = "follow_forward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
+        code = "follow_forward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" ;
     else
-        code = "follow_backward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
+        code = "follow_backward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" ;
 
     return code;
   };

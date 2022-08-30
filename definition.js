@@ -78,7 +78,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
     var code = "";
     if (speed > 0)
         code = "x";
-    elif (speed <0)
+    else
         code = "y";
     return code;
   };

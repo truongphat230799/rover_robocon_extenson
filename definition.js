@@ -4,7 +4,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       this.jsonInit(
         {
           "type": "rover_move_motor",
-          "message0": "quay động cơ trái tốc độ %1 động cơ phải %2 (-100 đến 100) cho đến khi gặp đường màu đen",
+          "message0": "quay động cơ trái %1 động cơ phải %2 (-100 đến 100) cho đến khi gặp vạch đen",
           "args0": [
             {
               "type": "input_value",
@@ -45,7 +45,6 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
           "message0": "dò line tốc độ %1 cho đến khi %2",
           "args0": [
             {
-                min: 0,
                 type: "input_value",
                 check: "Number",
                 value: 50,
@@ -68,13 +67,13 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
   };
   Blockly.Python['rover_follow_line_until'] = function(block) {
     Blockly.Python.definitions_['import_rover'] = 'from rover import *';
-    var request = Blockly.Python.valueToCode(block,  'request', Blockly.Python.ORDER_ATOMIC);
-    var speed = Blockly.Python.valueToCode(block, 'speed',Blockly.Pyhton.ORDER_ATOMIC);
+    var speed = Blockly.Python.valueToCode(block,  'speed', Blockly.Python.ORDER_ATOMIC);
+    var request = Blockly.Python.valueToCode(block, 'request',Blockly.Pyhton.ORDER_ATOMIC);
     var code = "";
     if (speed > 0 )
         code = "follow_forward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
     else
-        code = "follow_backward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n"
+        code = "follow_backward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
 
     return code;
   };

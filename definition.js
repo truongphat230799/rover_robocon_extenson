@@ -4,7 +4,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       this.jsonInit(
         {
           "type": "rover_move_motor",
-          "message0": "quay động cơ trái %1 động cơ phải %2 (-100 đến 100) đến khi gặp vạch đen",
+          "message0": "quay động cơ trái %1 động cơ phải %2 đến khi gặp vạch đen",
           "args0": [
             {
               "type": "input_value",

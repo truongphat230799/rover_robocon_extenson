@@ -42,12 +42,18 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       this.jsonInit(
         {
           "type": "rover_follow_line_until",
-          "message0": "đi theo đường màu đen cho đến khi %1",
+          "message0": "dò line tốc độ %1 cho đến khi %2",
           "args0": [
             {
-              "type": "input_value",
-              "name": "request",
-              
+                min: 0,
+                type: "input_value",
+                check: "Number",
+                value: 50,
+                name: "speed",             
+            },
+            {
+                "type": "input_value",
+                "name": "request",
             }
           ],
           "inputsInline": true,
@@ -63,6 +69,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
   Blockly.Python['rover_follow_line_until'] = function(block) {
     Blockly.Python.definitions_['import_rover'] = 'from rover import *';
     var request = Blockly.Python.valueToCode(block,  'request', Blockly.Python.ORDER_ATOMIC);
-    var code = "follow_forward_line()\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
+    var speed = Blockly.Python.valueToCode(block, 'speed',Blockly.Pyhton.ORDER_ATOMIC);
+    var code = "follow_forward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
     return code;
   };

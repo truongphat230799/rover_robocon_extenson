@@ -76,12 +76,11 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
     var speed = Blockly.Python.valueToCode(block,  'speed', Blockly.Python.ORDER_ATOMIC);
     var request = Blockly.Python.valueToCode(block, 'request',Blockly.Pyhton.ORDER_ATOMIC);
     var timeout = Blockly.Python.valueToCode(block, 'timeout' ,Blockly.Python.ORDER_ATOMIC)
-    var code = "";
-    if (speed > 0)
-        code = "x";
-    elif (speed <0)
-        code = "y";
-
+    var code = "abcd";
+    #if (speed > 0)
+     #   code = "x";
+    #elif (speed <0)
+     #   code = "y";
     return code;
   };
 

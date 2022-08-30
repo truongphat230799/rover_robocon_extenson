@@ -123,7 +123,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
     var speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
     var time = Blockly.Python.valueToCode(block, 'time', Blockly.Python.ORDER_ATOMIC);
     // TODO: Assemble Python into code variable.
-    var code =  "follow_forward_delay(" + speed + ", " + time + ")\n";
+    var code =  "follow_forward(" + speed + ", " + time + ")\n";
     return code;
   };
 

@@ -65,6 +65,6 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
   Blockly.Python['rover_follow_line_until'] = function(block) {
     Blockly.Python.definitions_['import_rover'] = 'from rover import *';
     var request = Blockly.Python.valueToCode(block,  'request', Blockly.Python.ORDER_ATOMIC);
-    var code = "follow_forward_line()\n" + "wait_for(" + request+")\n" + "rover.stop()\n";
+    var code = "follow_forward_line()\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
     return code;
   };

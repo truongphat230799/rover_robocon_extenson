@@ -45,15 +45,6 @@ def turn_until_line_detected(m1_speed, m2_speed, timeout=5000):
   
     time.sleep_ms(10)
 
-def follow_forward(speed):
-    if (rover.read_line_sensors() == (1, 0, 0, 0)) or (rover.read_line_sensors() == (1, 1, 0, 0)):
-        rover.turn_left(speed)
-    elif (rover.read_line_sensors() == (0, 0, 0, 1)) or (rover.read_line_sensors() == (0, 0, 1, 1)):
-        rover.turn_right(speed)
-    elif rover.read_line_sensors() == (0, 0, 0, 0):
-        rover.backward(speed, 0.1)
-    else:
-        rover.forward(speed)
 
 def follow_backward(speed):
   if rover.read_line_sensors() == (0, 1, 1, 0):
@@ -78,7 +69,7 @@ def follow_line(speed):
         follow_backward()
 
 
-def follow_forward_delay(speed,t = None):
+def follow_forward(speed,t = None):
     if (rover.read_line_sensors() == (1, 0, 0, 0)) or (rover.read_line_sensors() == (1, 1, 0, 0)):
         rover.turn_left(speed)
     elif (rover.read_line_sensors() == (0, 0, 0, 1)) or (rover.read_line_sensors() == (0, 0, 1, 1)):

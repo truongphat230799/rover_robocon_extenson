@@ -70,12 +70,16 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       );
     }
   };
-  Blockly.Python['rover_follow_line_until'] = function(block) {
+  Blockly.Python["rover_follow_line_until"] = function(block) {
     Blockly.Python.definitions_['import_rover'] = 'from rover import *';
     var speed = Blockly.Python.valueToCode(block,  'speed', Blockly.Python.ORDER_ATOMIC);
     var request = Blockly.Python.valueToCode(block, 'request',Blockly.Pyhton.ORDER_ATOMIC);
     var timeout = Blockly.Python.valueToCode(block, 'timeout' ,Blockly.Python.ORDER_ATOMIC)
-    var code = "12345";
+    var code = "";
+    if (speed > 0) 
+        code = "follow_forward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n";
+    else 
+        code = "follow_backward_line(" + speed + ")\n" + "wait_for(lambda:" + request+")\n" + "rover.stop()\n"
     return code;
   };
 

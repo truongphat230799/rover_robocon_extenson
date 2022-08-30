@@ -4,7 +4,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       this.jsonInit(
         {
           "type": "rover_move_motor",
-          "message0": "quay động cơ trái %1 động cơ phải %2 (-100 đến 100) cho đến khi gặp vạch đen",
+          "message0": "quay động cơ trái %1 động cơ phải %2 (-100 đến 100) đến khi gặp vạch đen",
           "args0": [
             {
               "type": "input_value",
@@ -42,7 +42,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
       this.jsonInit(
         {
           "type": "rover_follow_line_until",
-          "message0": "dò line tốc độ %1 cho đến khi %2",
+          "message0": "dò line tốc độ %1 đến khi %2 tối đa %3 giây",
           "args0": [
             {
                 type: "input_value",
@@ -53,6 +53,12 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
             {
                 "type": "input_value",
                 "name": "request",
+            },
+            {
+                type: "input_value",
+                check: "Number",
+                value: 5,
+                name: "timeout",
             }
           ],
           "inputsInline": true,
@@ -69,6 +75,7 @@ Blockly.Blocks['rover_turn_until_line_detected'] = {
     Blockly.Python.definitions_['import_rover'] = 'from rover import *';
     var speed = Blockly.Python.valueToCode(block,  'speed', Blockly.Python.ORDER_ATOMIC);
     var request = Blockly.Python.valueToCode(block, 'request',Blockly.Pyhton.ORDER_ATOMIC);
+    var timeout = Blockly.Python.valueToCode(block, 'timeout' ,Blockly.Python.ORDER_ATOMIC)
     var code = "";
     if (speed > 0)
         code = "x";

@@ -184,12 +184,12 @@ Blockly.Python["robocon_turn_until_condition"] = function (block) {
   return code;
 };
 
-Blockly.Blocks['move_gripper'] = {
+Blockly.Blocks['control_servo'] = {
   init: function () {
     this.jsonInit(
       {
-        "type": "move_gripper",
-        "message0": "đầu gắp %1 mở góc %2 tốc độ %3 (0-100)",
+        "type": "control_servo",
+        "message0": "servo %1 quay %2 độ tốc độ %3 (0-100)",
         "args0": [
           {
             type: "field_dropdown",
@@ -221,7 +221,7 @@ Blockly.Blocks['move_gripper'] = {
   }
 };
 
-Blockly.Python["move_gripper"] = function (block) {
+Blockly.Python["control_servo"] = function (block) {
   Blockly.Python.definitions_['import_rover'] = 'from rover import *';
   Blockly.Python.definitions_['import_robocon'] = 'from robocon import *';
   var angle_servo = Blockly.Python.valueToCode(block, 'angle', Blockly.Python.ORDER_ATOMIC);
@@ -229,53 +229,5 @@ Blockly.Python["move_gripper"] = function (block) {
   var servo_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
   var code = "moveGripper(" + dropdown_pin + ", " + angle_servo + ", " + servo_speed+")\n";
-  return code;
-};
-
-Blockly.Blocks['move_lifter'] = {
-  init: function () {
-    this.jsonInit(
-      {
-        "type": "move_lifter",
-        "message0": "đầu nâng %1 nâng góc %2 tốc độ %3 (0-100)",
-        "args0": [
-          {
-            type: "field_dropdown",
-            name: "pin",
-            options: [
-            ["S1", "1"],
-            ["S2", "2"],
-            ]
-          },
-          {
-            "type": "input_value",
-            "name": "angle",
-            "check": "Number",
-          },
-          {
-            "type": "input_value",
-            "name": "speed",
-            "check": "Number",
-          }
-        ],
-        "inputsInline": true,
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": ColorBlock,
-        "tooltip": "",
-        "helpUrl": ""
-      }
-    );
-  }
-};
-
-Blockly.Python["move_lifter"] = function (block) {
-  Blockly.Python.definitions_['import_rover'] = 'from rover import *';
-  Blockly.Python.definitions_['import_robocon'] = 'from robocon import *';
-  var angle_servo = Blockly.Python.valueToCode(block, 'angle', Blockly.Python.ORDER_ATOMIC);
-  var dropdown_pin = block.getFieldValue('pin');
-  var servo_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = "moveLifter(" + dropdown_pin + ", " + angle_servo + ", " + servo_speed+")\n";
   return code;
 };

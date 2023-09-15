@@ -10,6 +10,8 @@ speed_factors = [
 m_dir = -1 #no found
 i_lr = 0 #0 for left, 1 for right
 t_finding_point = time.time_ns()
+defaultGripper = 0
+defaultLifter = 0
 
 def follow_line(speed):
     global m_dir, i_lr, t_finding_point
@@ -145,3 +147,43 @@ def turn_until_condition(m1_speed, m2_speed, condition, timeout=5000):
         time.sleep_ms(10)
 
     rover.stop()
+
+def moveGripper(moveToGripper, speed=80):
+    global defaultGripper
+    sleep = translate(speed, 0, 100, 50, 0.1)
+    if speed == 0:
+        return
+    if moveToGripper < 0:
+        moveToGripper = 0
+    if moveToGripper > 90:
+        moveToGripper = 90
+    if moveToGripper < defaultGripper:
+        for i in range(defaultGripper, moveToGripper, -1):
+            rover.servo_write(1, i)
+            time.sleep_ms(int(sleep))
+    else:
+        for i in range(defaultGripper, moveToGripper):
+            rover.servo_write(1, i)
+            time.sleep_ms(int(sleep))
+    defaultGripper = moveToGripper
+
+
+def moveLifter(moveToLifter, speed=80):
+    global defaultLifter
+    sleep = translate(speed, 0, 100, 50, 0.1)
+    if speed == 0:
+        return
+    if moveToLifter < 0:
+        moveToLifter = 0
+    if moveToLifter > 90:
+        moveToLifter = 90
+    if moveToLifter < defaultLifter:
+        for i in range(defaultLifter, moveToLifter, -1):
+            rover.servo_write(1, i)
+            time.sleep_ms(int(sleep))
+    else:
+        for i in range(defaultLifter, moveToLifter):
+            rover.servo_write(1, i)
+            time.sleep_ms(int(sleep))
+    defaultLifter = moveToLifter
+

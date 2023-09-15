@@ -150,12 +150,16 @@ def turn_until_condition(m1_speed, m2_speed, condition, timeout=5000):
 def set_servo_position(pin, next_position , speed=80):
     global current_position 
     sleep = translate(speed, 0, 100, 50, 0.1)
+
     if speed == 0:
         return
+    
     if next_position < 0:
         next_position = 0
+
     if next_position > 90:
         next_position = 90
+        
     if next_position < current_position:
         for i in range(current_position, next_position, -1):
             rover.servo_write(pin, i)
@@ -164,6 +168,7 @@ def set_servo_position(pin, next_position , speed=80):
         for i in range(current_position, next_position):
             rover.servo_write(pin, i)
             time.sleep_ms(int(sleep))
+
     current_position = next_position
 
 

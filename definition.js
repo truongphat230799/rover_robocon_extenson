@@ -270,5 +270,5 @@ Blockly.Python["control_gripper"] = function (block) {
   else
     code = "set_servo_position(2, 0, 80)\n" + "time.sleep_ms(1000)\n" + "set_servo_position(1, 90, 80)" + "time.sleep_ms(1000)\n";
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  return code;
 };

@@ -266,9 +266,9 @@ Blockly.Python["control_gripper"] = function (block) {
   // TODO: Assemble Python into code variable.
   var code = "";
   if (dropdown_type == 'collect')
-    code = "set_servo_position(1, 0, 80)\n";
+    code = "set_servo_position(1, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(2, 90, 80)time.sleep_ms(1000)\n";
   else
-    code = "set_servo_position(2, 0, 80)\n";
+    code = "set_servo_position(2, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(1, 90, 80)time.sleep_ms(1000)\n";
   // TODO: Change ORDER_NONE to the correct strength.
   return code;
 };

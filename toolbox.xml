@@ -74,6 +74,7 @@
         </shadow>
       </value>
     </block>
-    <block type="control_gripper"></block>
+    <block type="control_gripper_grab"></block>
+    <block type="control_gripper_release"></block>
   </category>
 </xml>

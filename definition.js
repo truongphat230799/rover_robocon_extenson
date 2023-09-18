@@ -232,21 +232,14 @@ Blockly.Python["control_servo"] = function (block) {
   return code;
 };
 
-Blockly.Blocks['control_gripper'] = {
+Blockly.Blocks['control_gripper_grab'] = {
   init: function () {
     this.jsonInit(
       {
-        "type": "control_gripper",
-        "message0": "robot %1 quà",
+        "type": "control_gripper_grab",
+        "message0": "robot gắp vật",
         "args0": [     
-          {
-            type: "field_dropdown",
-            name: "action",
-            options: [
-            ["gắp", "collect"],
-            ["thả", "release"],
-            ]
-          }     
+              
         ],
         "inputsInline": true,
         "previousStatement": null,
@@ -259,16 +252,40 @@ Blockly.Blocks['control_gripper'] = {
   }
 };
 
-Blockly.Python["control_gripper"] = function (block) {
+Blockly.Python["control_gripper_grab"] = function (block) {
   Blockly.Python.definitions_['import_rover'] = 'from rover import *';
   Blockly.Python.definitions_['import_robocon'] = 'from robocon import *';
-  var dropdown_type = block.getFieldValue('action');
   // TODO: Assemble Python into code variable.
-  var code = "";
-  if (dropdown_type == 'collect')
-    code = "set_servo_position(1, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(2, 90, 80)\ntime.sleep_ms(1000)\n";
-  else
-    code = "set_servo_position(2, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(1, 90, 80)\ntime.sleep_ms(1000)\n";
-  // TODO: Change ORDER_NONE to the correct strength.
+  var code = "set_servo_position(1, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(2, 90, 80)\ntime.sleep_ms(1000)\n";
+  
+  return code;
+};
+
+Blockly.Blocks['control_gripper_release'] = {
+  init: function () {
+    this.jsonInit(
+      {
+        "type": "control_gripper_release",
+        "message0": "robot thả vật",
+        "args0": [     
+              
+        ],
+        "inputsInline": true,
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": ColorBlock,
+        "tooltip": "",
+        "helpUrl": ""
+      }
+    );
+  }
+};
+
+Blockly.Python["control_gripper_release"] = function (block) {
+  Blockly.Python.definitions_['import_rover'] = 'from rover import *';
+  Blockly.Python.definitions_['import_robocon'] = 'from robocon import *';
+  // TODO: Assemble Python into code variable.
+  var code = "set_servo_position(2, 0, 80)\ntime.sleep_ms(1000)\nset_servo_position(1, 90, 80)\ntime.sleep_ms(1000)\n";
+  
   return code;
 };

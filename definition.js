@@ -232,11 +232,11 @@ Blockly.Python["control_servo"] = function (block) {
   return code;
 };
 
-Blockly.Blocks['servo_collect'] = {
+Blockly.Blocks['control_gripper'] = {
   init: function () {
     this.jsonInit(
       {
-        "type": "servo_collect",
+        "type": "control_gripper",
         "message0": "robot %1 quà",
         "args0": [     
           {
@@ -259,7 +259,7 @@ Blockly.Blocks['servo_collect'] = {
   }
 };
 
-Blockly.Python["control_servo"] = function (block) {
+Blockly.Python["control_gripper"] = function (block) {
   Blockly.Python.definitions_['import_rover'] = 'from rover import *';
   Blockly.Python.definitions_['import_robocon'] = 'from robocon import *';
   var dropdown_type = block.getFieldValue('action');
